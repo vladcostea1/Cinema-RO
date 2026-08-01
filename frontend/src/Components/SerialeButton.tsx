@@ -1,8 +1,10 @@
+import { Link } from "../router"
+
 function SerialeButton() {
   return (
-    <div>
+    <Link to="/Seriale">
       <h2>Seriale</h2>
-    </div>                  
+    </Link>
   )
 }
 

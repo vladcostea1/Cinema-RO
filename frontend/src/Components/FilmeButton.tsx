@@ -1,10 +1,10 @@
+import { Link } from "react-router"
+
 function FilmeButton() {
   return (
-    <div>
+    <Link to="/Filme">
       <h2>Filme</h2>
-      
-
-    </div>
+    </Link>
   )
 }
 
