@@ -1,9 +1,8 @@
-// @ts-ignore: missing type declarations for express
+
 import express from "express";
-// @ts-ignore: missing type declarations for cors
 import cors from "cors";
 import dotenv from "dotenv";
-import "./db"
+import { pool } from "./db";
 
 dotenv.config();
     const app = express();
@@ -16,7 +15,19 @@ app.get("/", (req: express.Request, res: express.Response) => {
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(`Serverul rulează pe http://localhost:${PORT}`);
-} );  
+  console.log(`Serverul ruleaza pe http://localhost:${PORT}`);
+});
 
+app.get("/api/filme", async (req, res) => {
+  try {
+    const result = await pool.query("SELECT * FROM filme ORDER BY id");
+    res.json(result.rows);
+  } catch (error) {
+    console.error("EROARE SQL:", error);
+    res.status(500).json({
+      error: "Eroare la obținerea filmelor",
+      details: String(error),
+    });
+  }
+});
 
