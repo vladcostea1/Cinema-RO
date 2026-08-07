@@ -31,3 +31,19 @@ app.get("/api/filme", async (req, res) => {
   }
 });
 
+
+app.get("/api/seriale", async (req, res) => {
+  try{
+    const resault = await pool.query("SELECT * FROM seriale ORDER BY id");
+    res.json(resault.rows);
+  } catch (error){
+    console.error("EROARE:", error);
+    res.status(500).json({
+      error: "Eroare la obținerea serialelor",
+      details: String(error),
+    })
+  }
+
+});
+
+

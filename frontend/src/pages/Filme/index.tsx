@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import FilmeCard from "../../Components/FilmeCard/index.tsx";
+import UniversalCard from "../../Components/UniversalCard/index.tsx.ts";
+import BackButton from "../../Components/BackButton/index.tsx";
 
 type Film = {
   id: number;
@@ -30,10 +31,10 @@ function Filme() {
   return (
     <div className="filme-page">
       <h2>Filmele</h2>
-
+      <BackButton />
       <div className="filme-container">
         {filmes.map((filme) => (
-          <FilmeCard key={filme.id} filme={filme} />
+          <UniversalCard key={filme.id} content={filme} />
         ))}
       </div>
     </div>

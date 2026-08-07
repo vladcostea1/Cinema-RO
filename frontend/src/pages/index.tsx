@@ -10,6 +10,8 @@ function App() {
      
       <FilmeButton />
       <SerialeButton />
+      <title> Decimal for copyright</title>
+      <p>© 2026 CinemaRo. All rights reserved.</p>
     </div>
   )
 }
