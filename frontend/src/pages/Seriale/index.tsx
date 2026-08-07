@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import{ useEffect, useState } from "react";
 import UniversalCard from "../../Components/UniversalCard/index.tsx.ts";
 import BackButton from "../../Components/BackButton/index.tsx";
 type Film = {
