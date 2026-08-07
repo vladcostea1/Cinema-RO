@@ -17,7 +17,7 @@ function Seriale() {
   const [seriales, setSeriales] = useState<Film[]>([]);
 
  useEffect(() => {
-  fetch("http://localhost:3000/api/seriale")
+  fetch(`${import.meta.env.VITE_API}/api/seriale`)
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
