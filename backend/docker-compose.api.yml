@@ -1,0 +1,31 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: cinemaro-api
+
+    env_file:
+      - .env
+
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      POSTGRES_HOST: ${POSTGRES_HOST}
+      POSTGRES_PORT: ${POSTGRES_PORT}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+    ports:
+      - "3004:3000"
+
+    networks:
+      - coolify
+
+    restart: unless-stopped
+
+networks:
+  coolify:
+    external: true
