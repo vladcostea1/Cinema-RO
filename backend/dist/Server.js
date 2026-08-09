@@ -44,3 +44,5 @@ app.get("/api/seriale", async (req, res) => {
         });
     }
 });
+
+

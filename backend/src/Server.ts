@@ -46,4 +46,15 @@ app.get("/api/seriale", async (req, res) => {
 
 });
 
-
+app.get("/api/blogs", async(req, res) => {
+    try {
+        const result = await pool.query("SELECT * FROM blog_posts ORDER BY data_publicarii");
+        res.json(result.rows);
+    } catch (error) {
+        console.error("EROARE:", error);
+        res.status(500).json({
+            error: "Eroare pentru  bloguri",
+            details: String(error),
+        });
+    }
+});
