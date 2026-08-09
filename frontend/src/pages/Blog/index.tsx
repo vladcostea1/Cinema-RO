@@ -1,7 +1,6 @@
 import {useEffect, useState} from 'react';
-import UniversalCard from '../../Components/UniversalCard/index.tsx.ts';
 import BackButton from '../../Components/BackButton/index.tsx';
-import BlogButton from '../../Components/BlogButton/index.tsx';
+
 
 type Film = {
   id: number;
@@ -43,6 +42,7 @@ function Blog(){
     <div className="blog-page">
         <h2>Blog</h2>
         <BackButton />
+        
       {loading && <p>Se încarcă articolele...</p>}
       {error && <p className="blog-error">{error}</p>}
 
