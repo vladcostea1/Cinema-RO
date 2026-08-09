@@ -1,7 +1,7 @@
    import '../App.css'
 import FilmeButton from '../Components/FilmeButton'
 import SerialeButton from '../Components/SerialeButton'
-
+import BlogButton from '../Components/BlogButton'
 function App() {
   return (
     <div className="App">
@@ -10,7 +10,7 @@ function App() {
      
       <FilmeButton />
       <SerialeButton />
-      
+      <BlogButton />
       <title> Decimal for copyright</title>
       <p>© 2026 CinemaRo. All rights reserved.</p>
     </div>
