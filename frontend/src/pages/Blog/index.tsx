@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import BackButton from '../../Components/BackButton/index.tsx';
-
+import './index.css';
 
 type Film = {
   id: number;
