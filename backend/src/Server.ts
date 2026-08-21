@@ -76,3 +76,77 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Serverul ruleaza pe http://localhost:${PORT}`);
 });
+
+
+app.get("/api/search", async (req, res) => {
+  try {
+    const q = String(req.query.q || "").trim();
+
+    if (!q) {
+      return res.json({
+        filme: [],
+        seriale: []
+      });
+    }
+
+    const searchTerm = `%${q}%`;
+
+    const filmeResult = await pool.query(
+      `
+      SELECT
+        id,
+        titlu,
+        descriere,
+        gen,
+        anul_aparitiei,
+        durata,
+        rating,
+        imagine_url
+      FROM filme
+      WHERE
+        titlu ILIKE $1
+        OR descriere ILIKE $1
+        OR gen ILIKE $1
+      ORDER BY rating DESC, titlu ASC
+      LIMIT 10
+      `,
+      [searchTerm]
+    );
+
+    const serialeResult = await pool.query(
+      `
+      SELECT
+        id,
+        titlu,
+        descriere,
+        gen,
+        anul_aparitiei,
+        sezoane,
+        episoade,
+        rating,
+        imagine_url
+      FROM seriale
+      WHERE
+        titlu ILIKE $1
+        OR descriere ILIKE $1
+        OR gen ILIKE $1
+      ORDER BY rating DESC, titlu ASC
+      LIMIT 10
+      `,
+      [searchTerm]
+    );
+
+    res.json({
+      filme: filmeResult.rows,
+      seriale: serialeResult.rows
+    });
+
+  } catch (error) {
+    console.error("EROARE SEARCH:", error);
+
+    res.status(500).json({
+      error: "Eroare la căutare",
+      details: String(error)
+    });
+  }
+});
