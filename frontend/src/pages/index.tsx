@@ -7,7 +7,7 @@
   function Home() {
   return (
     <div className="App">
-        <h1>Descoperă următorul film.</h1>
+        <h1>CinemaRO</h1>
         <p>Caută printre filmele și serialele din CinemaRO.</p>
         <Search />
       <FilmeButton />
