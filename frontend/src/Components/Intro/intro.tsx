@@ -2,9 +2,7 @@ import { useEffect, useState } from "react";
 import "./intro.css";
 
 interface IntroSplashProps {
-  /** Cât timp stă vizibil intro-ul, în milisecunde (default 2400ms — trebuie >= durata animației CSS) */
   duration?: number;
-  /** Calea către imaginea logo-ului */
   logoSrc?: string;
 }
 
