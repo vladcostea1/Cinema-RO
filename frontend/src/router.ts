@@ -8,6 +8,7 @@ export type Path =
   | `/Blog`
   | `/Filme`
   | `/Seriale`
+  | `/login`
 
 export type Params = {
   

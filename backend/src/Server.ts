@@ -150,3 +150,26 @@ app.get("/api/search", async (req, res) => {
     });
   }
 });
+
+app.get("/auth/google/login", (req, res) => {
+  const clientId = process.env.GOOGLE_CLIENT_ID;
+  const redirectUri = process.env.GOOGLE_REDIRECT_URI;
+
+  if (!clientId || !redirectUri) {
+    return res.status(500).json({
+      error: "Google OAuth nu este configurat."
+    });
+  }
+
+  const googleUrl = new URL(
+    "https://accounts.google.com/o/oauth2/v2/auth"
+  );
+
+  googleUrl.searchParams.set("client_id", clientId);
+  googleUrl.searchParams.set("redirect_uri", redirectUri);
+  googleUrl.searchParams.set("response_type", "code");
+  googleUrl.searchParams.set("scope", "openid email profile");
+  googleUrl.searchParams.set("access_type", "offline");
+
+  res.redirect(googleUrl.toString());
+});
